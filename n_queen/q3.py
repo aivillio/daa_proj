@@ -1,4 +1,4 @@
-def main(n,blocked_rows=set()):
+def main(n,blocked_cells=set()):
     cols=set()
     pos_diag=set()
     neg_diag=set()
@@ -12,7 +12,7 @@ def main(n,blocked_rows=set()):
             return
         else:
             for col in range(n):
-                if col in cols or row+col in pos_diag or row-col in neg_diag or (row,col) in blocked_rows:
+                if col in cols or row+col in pos_diag or row-col in neg_diag or (row,col) in blocked_cells:
                     continue
                 board[row]=col
                 cols.add(col);pos_diag.add(row+col);neg_diag.add(row-col)
