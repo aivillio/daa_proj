@@ -31,7 +31,7 @@ def print_board(solution, n, blocked_cells=None):
         for col in range(n):
             if (row, col) in blocked_cells:
                 line.append('X')
-            elif solution[row] == col:   # ← fixed
+            elif solution[row] == col:   
                 line.append('V')
             else:
                 line.append('.')
