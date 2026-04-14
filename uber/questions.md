@@ -88,25 +88,33 @@ We use the Sieve of Eratosthenes to determine primality efficiently.
 
 ## 4. Time Complexity Analysis
 
-* **Prime Preprocessing**
-  $$O(N \log \log N)$$
+## Sieve of Eratosthenes Complexity
+
+- Number of multiples ≈ N/p
+
+Total work:
+
+∑ (over primes p ≤ N) N/p
+
+Factor out N:
+
+N · ∑ (over primes p ≤ N) 1/p
 
 ---
 
-* **Tree Traversal and Preprocessing (DFS)**
-  $$O(N)$$
-    * Each node is visited once.
+### Key result
+
+∑ (over primes p ≤ N) 1/p ≈ log log N  
+
+So complexity:
+
+N log log N
 
 ---
 
-* **Each Query**
-  $$O(1)$$
-    * Direct lookup from precomputed array.
+### Final form
 
----
-
-* **Overall Complexity**
-  $$O(N \log \log N + N + Q)$$
+∑ (p ≤ N) ⌊N/p⌋ ≈ N log log N
 
 
 # Performance for Large Inputs and Optimizations
