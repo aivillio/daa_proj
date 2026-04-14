@@ -1,11 +1,11 @@
 
 ##  task 1 - Algorithm 
 ---
-BACKTRACK(row, board, cols, diag1, diag2, solutions):
+BACKTRACK(row, board, cols, neg_diag, pos_diag, solutions):
 
     
     IF row == N:
-        ADD copy of board TO solutions
+        add copy of board to solutions
         RETURN
 
    
@@ -20,26 +20,26 @@ BACKTRACK(row, board, cols, diag1, diag2, solutions):
             CONTINUE
 
         
-        IF (row - col) IN diag1:
+        IF (row - col) IN neg_diag:
             CONTINUE
 
         
-        IF (row + col) IN diag2:
+        IF (row + col) IN pos_diag:
             CONTINUE
 
         
-        board[row] ← col
+        board[row] <- col
         ADD col        TO cols
-        ADD (row-col)  TO diag1
-        ADD (row+col)  TO diag2
+        ADD (row-col)  TO neg_diag
+        ADD (row+col)  TO pos_diag
 
         
-        BACKTRACK(row + 1, board, cols, diag1, diag2, solutions)
+        BACKTRACK(row + 1, board, cols, neg_diag, pos_diag, solutions)
 
         
         REMOVE col        FROM cols
-        REMOVE (row-col)  FROM diag1
-        REMOVE (row+col)  FROM diag2
+        REMOVE (row-col)  FROM neg_diag
+        REMOVE (row+col)  FROM pos_diag
 
     
     RETURN
@@ -57,8 +57,8 @@ The board is stored as a 1D array of length N where `board[row] = col` records w
 Three hash sets track occupied positions at all times:
 
 - `cols` — stores occupied column indices. If `col in cols`, that column is taken.
-- `diag1` — stores `row - col` values. All cells on the same main diagonal (↘) share the same `row - col` value.
-- `diag2` — stores `row + col` values. All cells on the same anti-diagonal (↙) share the same `row + col` value.
+- `neg_diag` — stores `row - col` values. All cells on the same main diagonal share the same `row - col` value.
+- `pos_diag` — stores `row + col` values. All cells on the same anti-diagonal share the same `row + col` value.
 
 Every placement adds to all three sets in O(1), and every removal (backtrack) deletes from all three in O(1). The conflict check at each cell is therefore three O(1) lookups — constant time regardless of N.
 
