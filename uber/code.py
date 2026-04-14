@@ -43,13 +43,71 @@ def efficiencyScores(n, values, edges, queries):
 
     return [primeCount[q] for q in queries]
 
-n = 5
-values = [10, 7, 4, 5, 6]
-edges = [[1,2], [1,3], [2,4], [2,5]]
-queries = [1, 2, 3]
+def run_test(test_num, n, values, edges, queries, expected):
+    print(f"\n--- Test Case {test_num} ---")
+    print("Values:", values)
+    print("Edges:", edges)
+    print("Queries:", queries)
 
-result = efficiencyScores(n, values, edges, queries)
+    result = efficiencyScores(n, values, edges, queries)
 
-print("Prime counts in queried subtrees:")
-for q, res in zip(queries, result):
-        print(f"Node {q}: {res}")
+    print("Output:", result)
+    print("Expected:", expected)
+
+    if result == expected:
+        print("PASS")
+    else:
+        print("FAIL")
+
+
+# ---------- TEST CASES ----------
+
+# Test Case 1
+run_test(
+    1,
+    5,
+    [10, 7, 4, 5, 6],
+    [[1,2], [1,3], [2,4], [2,5]],
+    [1, 2, 3],
+    [2, 2, 0]
+)
+
+# Test Case 2 (All non-prime)
+run_test(
+    2,
+    4,
+    [1, 4, 6, 8],
+    [[1,2], [1,3], [2,4]],
+    [1, 2, 3, 4],
+    [0, 0, 0, 0]
+)
+
+# Test Case 3 (All prime)
+run_test(
+    3,
+    5,
+    [2, 3, 5, 7, 11],
+    [[1,2], [1,3], [2,4], [2,5]],
+    [1, 2, 3],
+    [5, 3, 1]
+)
+
+# Test Case 4 (Skewed tree)
+run_test(
+    4,
+    5,
+    [2, 4, 3, 9, 5],
+    [[1,2], [2,3], [3,4], [4,5]],
+    [1, 2, 3, 4, 5],
+    [3, 2, 2, 1, 1]
+)
+
+# Test Case 5 (Mixed)
+run_test(
+    5,
+    7,
+    [8, 3, 10, 7, 6, 5, 2],
+    [[1,2], [1,3], [2,4], [2,5], [3,6], [3,7]],
+    [1, 2, 3, 4],
+    [4, 2, 2, 1]
+)
