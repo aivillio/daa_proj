@@ -81,9 +81,81 @@ We use the Sieve of Eratosthenes to determine primality efficiently.
    O(Nlog⁡log⁡N)
 
 
-Here is the markdown version of the complexity analysis shown in the image, ready for copy-pasting.
+The time complexity of the **Sieve of Eratosthenes** comes from counting how many times we mark numbers as non-prime.
 
 ---
+
+
+
+For every prime ( p ), we mark its multiples:
+
+* ( p, 2p, 3p, 4p, \dots \le N )
+* Number of multiples ≈ ( \frac{N}{p} )
+
+So total work is roughly:
+
+[
+\sum_{\text{primes } p \le N} \frac{N}{p}
+]
+
+Factor out ( N ):
+
+[
+N \sum_{\text{primes } p \le N} \frac{1}{p}
+]
+
+---
+
+## 🔹 Key mathematical result
+
+The important result from number theory:
+
+[
+\sum_{\text{primes } p \le N} \frac{1}{p} \approx \log \log N
+]
+
+So total complexity becomes:
+
+[
+N \cdot \log \log N
+]
+
+---
+
+## 🔹 Final summation form
+
+
+
+[
+\sum_{p \le N} \left\lfloor \frac{N}{p} \right\rfloor
+]
+
+Approximate it:
+
+[
+\approx N \sum_{p \le N} \frac{1}{p}
+\approx N \log \log N
+]
+
+---
+
+## 🔹 Why not ( N \log N )?
+
+Because:
+
+* We **don’t iterate over all numbers** in the inner loop
+* Only over **primes**
+* And primes become rarer as numbers grow
+
+That’s why the harmonic-like sum over primes grows slower:
+
+* Harmonic series ->( \log N )
+* Prime harmonic series ->( \log \log N )
+
+---
+
+
+
 
 ## 4. Time Complexity Analysis
 
