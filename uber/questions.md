@@ -85,7 +85,7 @@ Here is the markdown version of the complexity analysis shown in the image, read
 
 ---
 
-## ✅ 4. Time Complexity Analysis
+## 4. Time Complexity Analysis
 
 * **Prime Preprocessing**
   $$O(N \log \log N)$$
@@ -130,5 +130,5 @@ The proposed approach performs efficiently for large inputs due to the following
 
 $$O(N \log \log N + N + Q)$$
 
-👉 This is efficient and scalable for **N, Q ≤ 10⁵**.des (consider constraints up to 10^5).
+This is efficient and scalable for **N, Q ≤ 10⁵**.des (consider constraints up to 10^5).
 4.​ An
