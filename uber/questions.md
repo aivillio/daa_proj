@@ -130,4 +130,5 @@ The proposed approach performs efficiently for large inputs due to the following
 
 $$O(N \log \log N + N + Q)$$
 
-👉 This is efficient and scalable for **N, Q ≤ 10⁵**.
+👉 This is efficient and scalable for **N, Q ≤ 10⁵**.des (consider constraints up to 10^5).
+4.​ An
