@@ -131,4 +131,8 @@ The proposed approach performs efficiently for large inputs due to the following
 $$O(N \log \log N + N + Q)$$
 
 This is efficient and scalable for **N, Q ≤ 10⁵**.des (consider constraints up to 10^5).
-4.​ An
+
+## Optimization 
+
+To handle queries efficiently in an online setting where updates and queries are interleaved, the current DFS-based approach can be optimized using the Euler Tour technique combined with a Fenwick Tree (Binary Indexed Tree). The Euler Tour is used to flatten the tree into an array such that each subtree corresponds to a contiguous range. We then maintain a Fenwick Tree over this array, storing 1 for prime-valued nodes and 0 otherwise. This allows subtree queries to be answered as range sum queries and node updates to be handled efficiently. As a result, both updates and queries can be processed in 
+O(log⁡N) O(logN) time, making the solution suitable for dynamic scenarios with large inputs.
