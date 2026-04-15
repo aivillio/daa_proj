@@ -1,6 +1,6 @@
 # Uber Infrastructure Problem – Subtree Prime Count
 
-## 🔹 Problem Overview
+## Problem Overview
 
 Given a tree of `N` nodes where each node represents a service hub with an efficiency score, we must answer multiple queries:
 
@@ -8,8 +8,9 @@ Given a tree of `N` nodes where each node represents a service hub with an effic
 
 ---
 
-# 1. Psudocode
+## 1. Pseudocode
 
+```
 FUNCTION efficiencyScores(n, values, edges, queries):
 
     CREATE adjacency list tree[1..n]
@@ -65,8 +66,9 @@ FUNCTION SIEVE(N):
                 isPrime[multiple] = FALSE
 
     RETURN isPrime
+```
 
-3. Efficient Prime Determination Method
+## 3. Efficient Prime Determination Method
 
 We use the Sieve of Eratosthenes to determine primality efficiently.
 
@@ -76,9 +78,9 @@ We use the Sieve of Eratosthenes to determine primality efficiently.
 * For each number a, if it is prime:
 * Mark all multiples of a (starting from a * a) as non-prime.
 
-🔹 Complexity:
+Complexity:
 
-   O(Nlog⁡log⁡N)
+   $$O(N\log \log ⁡N)$$
 
 
 
@@ -88,7 +90,7 @@ We use the Sieve of Eratosthenes to determine primality efficiently.
 
 ## 4. Time Complexity Analysis
 
-## Sieve of Eratosthenes Complexity
+### Sieve of Eratosthenes Complexity
 
 - Number of multiples ≈ N/p
 
@@ -119,7 +121,7 @@ N log log N
 
 # Performance for Large Inputs and Optimizations
 
-## 🔹 Performance for Large Inputs (N, Q ≤ 10⁵)
+## Performance for Large Inputs (N, Q ≤ 10⁵)
 
 The proposed approach performs efficiently for large inputs due to the following reasons:
 
@@ -135,7 +137,7 @@ The proposed approach performs efficiently for large inputs due to the following
 - Each query is answered using a precomputed value:
 - **O(1) per query**
 
-## 🔹 Overall Time Complexity
+## Overall Time Complexity
 
 $$O(N \log \log N + N + Q)$$
 
