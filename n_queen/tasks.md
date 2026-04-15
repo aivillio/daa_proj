@@ -1,7 +1,7 @@
 
 ##  task 1 - Algorithm 
 ---
-BACKTRACK(row, board, cols, neg_diag, pos_diag, solutions):
+BACKTRACK():
 
     
     IF row == N:
@@ -71,7 +71,6 @@ Rows never need a set because the algorithm advances one row at a time, so two v
 **Worst case:**
 
 At row 0 there are N column choices. At row 1 at most N−1 remain (one column taken). At row 2 at most N−2, and so on. This gives an upper bound of:
-
 
 O(N!)
 
