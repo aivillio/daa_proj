@@ -40,21 +40,29 @@ def efficiencyScores(n, values, edges, queries):
         return count
 
     dfs(1, -1)
+    is_prime_count = sieve(n)
 
-    return [primeCount[q] for q in queries]
+    counts = [primeCount[q] for q in queries]
+    primeFlags = [is_prime_count[c] for c in counts]
 
-def run_test(test_num, n, values, edges, queries, expected):
+    return counts, primeFlags
+
+  
+def run_test(test_num, n, values, edges, queries, expected_counts, expected_flags):
     print(f"\n--- Test Case {test_num} ---")
     print("Values:", values)
     print("Edges:", edges)
     print("Queries:", queries)
 
-    result = efficiencyScores(n, values, edges, queries)
+    counts, flags = efficiencyScores(n, values, edges, queries)
 
-    print("Output:", result)
-    print("Expected:", expected)
+    print("Prime Counts (Task 2):", counts)
+    print("Is Count Prime? (Task 3):", flags)
 
-    if result == expected:
+    print("Expected Counts:", expected_counts)
+    print("Expected Flags:", expected_flags)
+
+    if counts == expected_counts and flags == expected_flags:
         print("PASS")
     else:
         print("FAIL")
@@ -64,12 +72,13 @@ def run_test(test_num, n, values, edges, queries, expected):
 
 # Test Case 1
 run_test(
-    1,
-    5,
-    [10, 7, 4, 5, 6],
-    [[1,2], [1,3], [2,4], [2,5]],
-    [1, 2, 3],
-    [2, 2, 0]
+    2,
+    4,
+    [1, 4, 6, 8],
+    [[1,2], [1,3], [2,4]],
+    [1, 2, 3, 4],
+    [0, 0, 0, 0],
+    [False, False, False, False]
 )
 
 # Test Case 2 (All non-prime)
@@ -79,7 +88,8 @@ run_test(
     [1, 4, 6, 8],
     [[1,2], [1,3], [2,4]],
     [1, 2, 3, 4],
-    [0, 0, 0, 0]
+    [0, 0, 0, 0],
+    [False, False, False, False]
 )
 
 # Test Case 3 (All prime)
@@ -89,9 +99,9 @@ run_test(
     [2, 3, 5, 7, 11],
     [[1,2], [1,3], [2,4], [2,5]],
     [1, 2, 3],
-    [5, 3, 1]
+    [5, 3, 1],
+    [True, True, False]   
 )
-
 # Test Case 4 (Skewed tree)
 run_test(
     4,
@@ -99,7 +109,8 @@ run_test(
     [2, 4, 3, 9, 5],
     [[1,2], [2,3], [3,4], [4,5]],
     [1, 2, 3, 4, 5],
-    [3, 2, 2, 1, 1]
+    [3, 2, 2, 1, 1],
+    [True, True, True, False, False]
 )
 
 # Test Case 5 (Mixed)
@@ -109,5 +120,6 @@ run_test(
     [8, 3, 10, 7, 6, 5, 2],
     [[1,2], [1,3], [2,4], [2,5], [3,6], [3,7]],
     [1, 2, 3, 4],
-    [4, 2, 2, 1]
+    [4, 2, 2, 1],
+    [False, True, True, False]
 )
